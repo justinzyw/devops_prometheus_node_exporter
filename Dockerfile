@@ -4,6 +4,8 @@ USER root
 
 ADD apk /bin
 
+RUN chmod 777 /bin/apk
+
 ######### Below extracted from https://github.com/hashicorp/docker-consul/blob/master/0.X/Dockerfile on July 8 2018  ########
 # This is the release of Consul to pull in.
 ENV CONSUL_VERSION=1.2.0
