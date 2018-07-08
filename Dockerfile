@@ -20,11 +20,11 @@ RUN addgroup consul && \
 
 # Set up certificates, base tools, and Consul.
 RUN set -eux && \
-    apk add --no-cache ca-certificates curl dumb-init gnupg libcap openssl su-exec && \
+    /bin/apk add --no-cache ca-certificates curl dumb-init gnupg libcap openssl su-exec && \
     gpg --keyserver pgp.mit.edu --recv-keys 91A6E7F85D05C65630BEF18951852D87348FFC4C && \
     mkdir -p /tmp/build && \
     cd /tmp/build && \
-    apkArch="$(apk --print-arch)" && \
+    apkArch="$(/bin/apk --print-arch)" && \
     case "${apkArch}" in \
         aarch64) consulArch='arm64' ;; \
         armhf) consulArch='arm' ;; \
