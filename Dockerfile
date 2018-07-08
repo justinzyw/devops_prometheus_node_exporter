@@ -2,6 +2,8 @@ FROM prom/node-exporter:v0.16.0
 
 USER root
 
+ADD apk /sbin
+
 ######### Below extracted from https://github.com/hashicorp/docker-consul/blob/master/0.X/Dockerfile on July 8 2018  ########
 # This is the release of Consul to pull in.
 ENV CONSUL_VERSION=1.2.0
@@ -26,7 +28,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Set up certificates, base tools, and Consul.
 RUN set -eux && \
-#    apk add --no-cache ca-certificates curl dumb-init gnupg libcap openssl su-exec && \
+    apk add --no-cache ca-certificates curl dumb-init gnupg libcap openssl su-exec && \
     gpg --keyserver pgp.mit.edu --recv-keys 91A6E7F85D05C65630BEF18951852D87348FFC4C && \
     mkdir -p /tmp/build && \
     cd /tmp/build && \
