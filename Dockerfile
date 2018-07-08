@@ -16,16 +16,6 @@ ENV HASHICORP_RELEASES=https://releases.hashicorp.com
 RUN addgroup consul && \
     adduser -S -G consul consul
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-		ca-certificates \
-		curl \
-		dumb-init \
-		gnupg \
-		libcap \
-        openssl \
-        su-exec \
-&& rm -rf /var/lib/apt/lists/*
-
 # Set up certificates, base tools, and Consul.
 RUN set -eux && \
     apk add --no-cache ca-certificates curl dumb-init gnupg libcap openssl su-exec && \
