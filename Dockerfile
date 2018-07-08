@@ -14,10 +14,20 @@ ENV HASHICORP_RELEASES=https://releases.hashicorp.com
 RUN addgroup consul && \
     adduser -S -G consul consul
 
+RUN apt-get update && apt-get install -y --no-install-recommends \
+		ca-certificates \
+		curl \
+		dumb-init \
+		gnupg \
+		libcap \
+        openssl \
+        su-exec \
+&& rm -rf /var/lib/apt/lists/*
+
 # Set up certificates, base tools, and Consul.
 RUN set -eux && \
 #    apk add --no-cache ca-certificates curl dumb-init gnupg libcap openssl su-exec && \
-#    gpg --keyserver pgp.mit.edu --recv-keys 91A6E7F85D05C65630BEF18951852D87348FFC4C && \
+    gpg --keyserver pgp.mit.edu --recv-keys 91A6E7F85D05C65630BEF18951852D87348FFC4C && \
     mkdir -p /tmp/build && \
     cd /tmp/build && \
     apkArch="$(apk --print-arch)" && \
