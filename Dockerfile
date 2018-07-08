@@ -1,8 +1,5 @@
 FROM prom/node-exporter:v0.16.0
 
-USER root
+COPY docker-entrypoint.sh /bin/docker-entrypoint.sh
 
-ADD apk /bin
-
-RUN chmod 777 /bin/apk
-
+ENTRYPOINT ["/bin/docker-entrypoint.sh"]
