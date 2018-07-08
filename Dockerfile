@@ -1,6 +1,8 @@
 FROM prom/node-exporter:v0.16.0
 
-# EBelow extracted from https://github.com/hashicorp/docker-consul/blob/master/0.X/Dockerfile on July 8 2018
+USER root
+
+######### Below extracted from https://github.com/hashicorp/docker-consul/blob/master/0.X/Dockerfile on July 8 2018  ########
 # This is the release of Consul to pull in.
 ENV CONSUL_VERSION=1.2.0
 
@@ -72,3 +74,4 @@ ENTRYPOINT ["docker-entrypoint.sh"]
 # everything in RAM, exposes a web UI and HTTP endpoints, and bootstraps itself.
 # Don't use this configuration for production.
 CMD ["agent", "-dev", "-client", "0.0.0.0"]
+######### Above extracted from https://github.com/hashicorp/docker-consul/blob/master/0.X/Dockerfile on July 8 2018  ########
