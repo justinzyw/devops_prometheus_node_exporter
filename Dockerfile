@@ -13,4 +13,4 @@ RUN wget -O consul.zip "https://releases.hashicorp.com/consul/${CONSUL_VERSION}/
 
 EXPOSE 8300 8301 8301/udp 8302 8302/udp 8500 8600 8600/udp
 
-ENTRYPOINT ["/bin/sh","-c","./entrypoint.sh"]
+#ENTRYPOINT ["/bin/sh","-c","./entrypoint.sh"]
